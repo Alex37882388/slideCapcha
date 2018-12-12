@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TnCode</title>
+    <script type="text/javascript" src="static/slide-capcha.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/slide-capcha.css"/>
+</head>
+<body style="text-align:center;">
+<span class="tncode">点击</span>
+
+<form id="example" class="asd">
+    <input type="text" name="user_name" value="first236108">
+    <input type="password" name="password" value="123456">
+    <select name="remember" id="remember">
+        <option value="1">记住账号</option>
+        <option value="2">否</option>
+    </select>
+    <select name="paymethod" id="paymethod">
+        <option value="8">余额</option>
+        <option value="10">红包</option>
+    </select>
+    <input type="radio" name="sex" value="male">
+</form>
+<script type="text/javascript">
+    tncode.init({
+        imageUrl: '/make.php',//验证码接口
+        submit: '/login.php',//表单提交接口
+        form: 'example',//表单名称
+        method: 'post',//可选项，表单提交方式，不填默认为 get
+        success: 'ok',//可选项，表单提交接口返回的status字段内容的成功标识，不填默认为ok
+        onsuccess: function (res) {
+            console.log(res);
+            debugger;
+            location.href = res.url;//验证成功后跳转
+        }
+    });
+
+</script>
+</body>
+</html>

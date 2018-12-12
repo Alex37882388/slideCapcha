@@ -1,0 +1,20 @@
+{
+  "name": "first236108/slide-capcha",
+  "description": "a free slide picture capcha library.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "潘志强",
+      "email": "85210755@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SliderCapcha\\": "src/"
+    }
+  }
+}
