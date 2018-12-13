@@ -5,7 +5,7 @@ This library is [tncode](https://github.com/binwind8/tncode)'s upgrade, thinks f
 # for install
 composer require first236108/slide-capcha
 
-#document
+# document
 for detail, please reference the example. Just need to pay attention, first, the API return data must include status field; and second, the format of picture is png; finally,the form handle is id, like this:
 ```html
 <form id="form1">
