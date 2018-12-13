@@ -14,7 +14,7 @@ if (is_file('/vendor/autoload.php')) {
 
 use SliderCapcha\SliderCapcha;
 
-$dir = dirname(__FILE__) . '/bg/';
+$dir = dirname(__FILE__) . DIRECTORY_SEPARATOR.'bg'.DIRECTORY_SEPARATOR;
 
 $sc = new SliderCapcha($dir);
 

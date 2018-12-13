@@ -4,25 +4,78 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TnCode</title>
+    <title>example</title>
     <script type="text/javascript" src="static/slide-capcha.js"></script>
     <link rel="stylesheet" type="text/css" href="static/slide-capcha.css"/>
 </head>
-<body style="text-align:center;">
-<span class="tncode">点击</span>
+<style>
+    body{max-width:450px;  margin:0 auto}
+    .title {
+        margin: 2rem;
+        border-bottom: 1px solid #ccc;
+    }
 
-<form id="example" class="asd">
-    <input type="text" name="user_name" value="first236108">
-    <input type="password" name="password" value="123456">
-    <select name="remember" id="remember">
-        <option value="1">记住账号</option>
-        <option value="2">否</option>
-    </select>
-    <select name="paymethod" id="paymethod">
-        <option value="8">余额</option>
-        <option value="10">红包</option>
-    </select>
-    <input type="radio" name="sex" value="male">
+    form {
+        margin: 4rem;
+    }
+
+    input[type='text'], input[type='password'], select {
+        height: 1.5rem;
+        font-size: 1rem;
+        border: 1px solid #969696;
+        width: 100%;
+    }
+
+    input[type='radio'], select {
+        margin-top: 0.15rem;
+    }
+
+    input:focus {
+        outline-color: #24C628;
+    }
+
+    label {
+        line-height: 1.5rem;
+    }
+
+    .submit {
+        display: block;
+        margin: 2rem auto;
+        background-color: #24C628;
+        color: #fff
+    }
+
+    #outer {
+        width: 50%;
+        margin:0 auto;
+    }
+</style>
+<body style="text-align:center;">
+
+<div class="title"><h2>会员登录</h2></div>
+<form id="example">
+    <div id="outer">
+        <div>
+            <input type="text" name="user_name" value="" placeholder="账号">
+        </div>
+        <div>
+            <input type="password" name="password" value="" placeholder="密码">
+        </div>
+        <div>
+            <select name="select" id="select">
+                <option value="1">登录后台</option>
+                <option value="2">登录前台</option>
+            </select>
+        </div>
+        <select name="paymethod" id="paymethod">
+            <option value="8">余额</option>
+            <option value="10">红包</option>
+        </select>
+        <div class="left"><label for="remember">记住密码</label>
+            <input type="radio" name="remember" id="remember" value="1">
+        </div>
+    </div>
+    <span class="tncode submit">点击登录</span>
 </form>
 <script type="text/javascript">
     tncode.init({

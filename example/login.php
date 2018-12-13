@@ -14,11 +14,11 @@ if (is_file('/vendor/autoload.php')) {
 
 use SliderCapcha\SliderCapcha;
 
-header('Content-Type: application/json charset=utf-8');
 if (SliderCapcha::check()) {
     $arr = ['url' => '/', 'status' => 'ok'];
 } else {
     $arr = ['url' => '/', 'status' => 'error'];
 }
 
+header('Content-Type: application/json charset=utf-8');
 exit(json_encode($arr));

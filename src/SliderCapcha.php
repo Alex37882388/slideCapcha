@@ -1,4 +1,5 @@
 <?php
+namespace SliderCapcha;
 /**
  * Created by PhpStorm.
  * User: 85210755@qq.com

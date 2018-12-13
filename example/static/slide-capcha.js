@@ -504,7 +504,6 @@ var tncode = {
             var objs = document.getElementByClassName('tncode', -1);
             for (var i in objs) {
                 var o = objs[i];
-                o.innerHTML = '点击按钮进行验证';
                 tncode._bind(o, 'touchstart', _this.show);
                 tncode._bind(o, 'click', _this.show);
             }
