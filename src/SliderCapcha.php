@@ -1,4 +1,5 @@
 <?php
+
 namespace SliderCapcha;
 /**
  * Created by PhpStorm.
@@ -20,15 +21,26 @@ class SliderCapcha
     private $_x = 0;
     private $_y = 0;
     private $dir = '/';
+    private $file_mark;
+    private $file_mark2;
 
-    private static $_fault = 5;//容错象素 越大体验越好，越小破解难道越高
+    private static $_fault = 5;
 
-    function __construct($dir = '', $fault = 5)
+    function __construct(array $config = [])
     {
-        self::$_fault = $fault;
-        if (is_dir($dir)) {
-            $this->dir = $dir;
-            $files     = scandir($dir);
+        $default          = [
+            'dir'     => '',
+            'fault'   => 5,
+            'mark_bg' => dirname(__FILE__) . '/img/mark.png',
+            'mark'    => dirname(__FILE__) . '/img/mark2.png'
+        ];
+        $default          = array_merge($default, $config);
+        self::$_fault     = $default['fault'];
+        $this->file_mark  = $default['mark_bg'];
+        $this->file_mark2 = $default['mark'];
+        if (is_dir($default['dir'])) {
+            $this->dir = $default['dir'];
+            $files     = scandir($default['dir']);
             foreach ($files as $index => $file) {
                 if (!strpos($file, '.png'))
                     unset($files[$index]);
@@ -52,25 +64,25 @@ class SliderCapcha
         $this->_destroy();
     }
 
-    public static function check($offset = '')
+    public static function check(int $offset = 0)
     {
         if (!isset($_SESSION)) {
             session_start();
         }
 
-        if (!$_SESSION['tncode_r']) {
+        if (!isset($_SESSION['tncode_r'])) {
             return false;
         }
         if (!$offset) {
-            $offset = $_REQUEST['tn_r'];
+            $offset = $_REQUEST['tn_r'] ?? 0;
         }
         $ret = abs($_SESSION['tncode_r'] - $offset) <= self::$_fault;
-        file_put_contents('aa.txt', self::$_fault);
         if ($ret) {
             unset($_SESSION['tncode_r']);
         } else {
             $_SESSION['tncode_err']++;
-            if ($_SESSION['tncode_err'] > 10) {//错误10次必须刷新
+            //错误10次必须刷新
+            if (isset($_SESSION['tncode_err']) && $_SESSION['tncode_err'] > 10) {
                 unset($_SESSION['tncode_r']);
             }
         }
@@ -124,7 +136,7 @@ class SliderCapcha
 
     private function _createBg()
     {
-        $file_mark = dirname(__FILE__) . '/img/mark.png';
+        $file_mark = $this->file_mark;
         $im        = imagecreatefrompng($file_mark);
         header('Content-Type: image/png');
         //imagealphablending( $im, true);
@@ -136,7 +148,7 @@ class SliderCapcha
 
     private function _createSlide()
     {
-        $file_mark = dirname(__FILE__) . '/img/mark2.png';
+        $file_mark = $this->file_mark2;
         $img_mark  = imagecreatefrompng($file_mark);
         imagecopy($this->im_slide, $this->im_fullbg, 0, $this->_y, $this->_x, $this->_y, $this->mark_width, $this->mark_height);
         imagecopy($this->im_slide, $img_mark, 0, $this->_y, 0, 0, $this->mark_width, $this->mark_height);

@@ -15,6 +15,7 @@ if (is_file('/vendor/autoload.php')) {
 use SliderCapcha\SliderCapcha;
 
 if (SliderCapcha::check()) {
+    //TODO password_verify()
     $arr = ['url' => '/', 'status' => 'ok'];
 } else {
     $arr = ['url' => '/', 'status' => 'error'];

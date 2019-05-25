@@ -1,4 +1,8 @@
 # SlideCapcha
+===============
+[![Build Status](https://travis-ci.org/top-think/framework.svg?branch=master)](https://travis-ci.org/top-think/framework)
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D7.0-8892BF.svg)](http://www.php.net/)
+# description
 slide capcha,it is free, as original author (weiyingbin) said that many verification code need charged. So, try this.
 This library is [tncode](https://github.com/binwind8/tncode)'s upgrade, thinks for weiyingbin, hope no infringement.
 
