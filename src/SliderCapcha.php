@@ -113,7 +113,7 @@ class SliderCapcha
 
     private function _imgout()
     {
-        if (!$_GET['nowebp'] && function_exists('imagewebp')) {//优先webp格式，超高压缩率
+        if (!isset($_GET['nowebp']) && function_exists('imagewebp')) {//优先webp格式，超高压缩率
             $type    = 'webp';
             $quality = 50;//图片质量 0-100
         } else {
