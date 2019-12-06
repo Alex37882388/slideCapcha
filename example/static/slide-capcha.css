@@ -245,9 +245,9 @@ body {
 
 .tncode_msg_ok, .tncode_msg_error {
     position: absolute;
-    top: 136px;
+    top: 140px;
     left: 10px;
-    width: 220px;
+    width: calc(100% - 18px);
     height: 20px;
     color: #fff;
     margin: 0;
